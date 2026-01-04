@@ -6,7 +6,7 @@ Instead of calling expensive LLMs for every request, this proxy implements a hig
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 The system acts as a middleware layer between your application and AI providers (Perplexity, OpenAI, etc.).
 
@@ -17,7 +17,7 @@ The system acts as a middleware layer between your application and AI providers 
 
 ---
 
-## 📊 Performance Benchmarks (Production Simulation)
+## Performance Benchmarks (Production Simulation)
 
 | Metric | Direct API Access | With Frugal Proxy | Efficiency Gain |
 | :--- | :--- | :--- | :--- |
@@ -28,7 +28,7 @@ The system acts as a middleware layer between your application and AI providers 
 
 ---
 
-## 🖥️ Dashboard: Dual-Audience Observability
+## Dashboard: Dual-Audience Observability
 
 The project includes a Streamlit dashboard with two distinct perspectives:
 
@@ -45,7 +45,7 @@ The project includes a Streamlit dashboard with two distinct perspectives:
 
 ---
 
-## 🧠 Technical Decisions & Philosophy
+## Technical Decisions and Philosophy
 
 ### Why DuckDB instead of ChromaDB?
 In a production environment, simplicity is reliability. We pivoted to **DuckDB** for vector storage because:
@@ -58,7 +58,7 @@ To gain trust from stakeholders, the proxy occasionally runs a "Shadow Call"—s
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 *   **Backend**: FastAPI (Python)
 *   **Vector Store**: DuckDB (Native Vector Support)
@@ -69,7 +69,7 @@ To gain trust from stakeholders, the proxy occasionally runs a "Shadow Call"—s
 
 ---
 
-## ⚙️ Quick Start
+## Quick Start
 
 1.  **Install**: `pip install -r requirements.txt`
 2.  **Configure**: Add `PERPLEXITY_API_KEY` to `.env`
