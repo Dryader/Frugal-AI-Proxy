@@ -47,12 +47,6 @@ The project includes a Streamlit dashboard with two distinct perspectives:
 
 ## Technical Decisions and Philosophy
 
-### Why DuckDB instead of ChromaDB?
-In a production environment, simplicity is reliability. We pivoted to **DuckDB** for vector storage because:
-*   **Zero-Dependency**: It avoids heavy ML runtimes like `onnxruntime`, making it compatible with the latest Python environments (including 3.14).
-*   **Single-File Portability**: The entire vector cache is a single `.duckdb` file, making backups and migrations trivial.
-*   **Speed**: For semantic caching at scale, DuckDB's vectorized execution engine provides sub-millisecond similarity lookups.
-
 ### The "Shadow Call" Strategy
 To gain trust from stakeholders, the proxy occasionally runs a "Shadow Call"—sending the same query to a premium model in the background. This allows us to mathematically prove that our cheaper model choice provided a comparable result, justifying the cost savings.
 
