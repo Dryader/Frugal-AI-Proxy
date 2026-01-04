@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+duckdb
+streamlit
+openai
+sentence-transformers
+pandas
+plotly
+sqlmodel
+python-dotenv

@@ -1,0 +1,23 @@
+{
+    "models": {
+        "sonar": {
+            "input_1m": 1.0,
+            "output_1m": 1.0,
+            "search_fee_1k": 5.0,
+            "description": "Fast & Efficient - Best for simple facts and news."
+        },
+        "sonar-pro": {
+            "input_1m": 3.0,
+            "output_1m": 15.0,
+            "search_fee_1k": 8.0,
+            "description": "Depth & Context - Best for research and synthesis."
+        },
+        "sonar-reasoning-pro": {
+            "input_1m": 2.0,
+            "output_1m": 8.0,
+            "search_fee_1k": 8.0,
+            "description": "High-Stakes Logic - Best for complex strategy."
+        }
+    },
+    "premium_baseline": "sonar-reasoning-pro"
+}
