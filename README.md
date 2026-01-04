@@ -1,72 +1,63 @@
-# Frugal AI Proxy: Enterprise Cost Management & Semantic Caching
+# Frugal AI Proxy: Reducing Enterprise AI Costs by 40%+
 
-The **Frugal AI Proxy** is an operations framework designed to solve the most common problem in production AI: **uncontrolled API spend.** 
+The **Frugal AI Proxy** is a business-focused operations framework designed to solve the most pressing challenge in corporate AI adoption: **unpredictable and escalating API costs.**
 
-Instead of calling expensive LLMs for every request, this proxy implements a high-performance semantic cache and an intelligent routing layer that matches query complexity to the most cost-effective model.
-
----
-
-## Architecture Overview
-
-The system acts as a middleware layer between your application and AI providers (Perplexity, OpenAI, etc.).
-
-1.  **Semantic Cache (DuckDB)**: Every query is embedded locally using `all-MiniLM-L6-v2`. If a semantically similar query (Similarity > 0.8) exists in the DuckDB vector store, the response is served in **<50ms** at **$0 cost**.
-2.  **Intelligent Router**: A complexity classifier analyzes the intent. Simple factual queries are routed to `sonar` ($), while complex reasoning tasks go to `sonar-reasoning-pro` ($$$).
-3.  **Observability Engine (SQLite)**: Every transaction is logged with metadata: latency, token usage, actual cost, and "Value Leakage" (how much would have been wasted without the proxy).
-4.  **Market Intelligence**: A built-in research agent that uses Perplexity to live-scan the web for the latest pricing and benchmarks of competitors (OpenAI, Anthropic, Google).
+As companies integrate AI into their workflows, they often overpay for "Premium" models (like GPT-4 or Claude 3.5) to handle simple tasks that could be solved for a fraction of the cost. This project provides the infrastructure to automate cost-savings without sacrificing quality.
 
 ---
 
-## Performance Benchmarks (Production Simulation)
+## How It Works (The Business Logic)
 
-| Metric | Direct API Access | With Frugal Proxy | Efficiency Gain |
+The proxy acts as an intelligent "gatekeeper" between your company's applications and AI providers.
+
+1.  **Smart Memory (Semantic Caching)**: The system remembers previous questions and answers. If a similar request is made, it serves the answer instantly from its local memory. This results in **$0 cost** and **near-instant response times** for repeat queries.
+2.  **Intelligent Routing**: Not every task requires a "supercomputer" AI. The proxy analyzes the complexity of a request in real-time. Simple factual questions are sent to efficient, low-cost models, while only complex reasoning tasks are sent to expensive premium models.
+3.  **Automated Market Research**: AI pricing changes weekly. The proxy includes a built-in research agent that monitors the market (OpenAI, Google, Anthropic) to ensure your routing logic is always optimized for the best current prices.
+4.  **Quality Assurance (Shadow Testing)**: To ensure "Frugal" doesn't mean "Cheap quality," the system occasionally runs background checks against premium models to verify that the lower-cost alternatives are delivering high-quality results.
+
+---
+
+## Business Impact
+
+Based on production simulations, the Frugal AI Proxy delivers immediate ROI:
+
+| Metric | Without Proxy | With Frugal Proxy | Improvement |
 | :--- | :--- | :--- | :--- |
-| **Avg. Cost per 1k Queries** | $15.40 | $8.20 | **47% Cost Reduction** |
-| **Avg. Response Latency** | 1,450ms | 520ms | **64% Faster** |
-| **Cache Hit Rate** | 0% | 32% | **+32% Reuse** |
-| **Value Leakage Prevented** | $0.00 | $450.00/mo | **High ROI** |
+| **Cost per 1,000 Queries** | $15.40 | $8.20 | **47% Savings** |
+| **Average Speed** | 1.4 Seconds | 0.5 Seconds | **64% Faster** |
+| **Resource Reuse** | 0% | 32% | **32% Efficiency Gain** |
+| **Annual Projected Savings** | $0 | $5,400+ (per small team) | **High ROI** |
 
 ---
 
-## Dashboard: Dual-Audience Observability
+## Visibility and Control
 
-The project includes a Streamlit dashboard with two distinct perspectives:
+The project includes a dedicated dashboard designed for two audiences:
 
-### 1. Executive ROI View (For Business Stakeholders)
-*   **Total Money Saved**: A high-level metric card showing cumulative savings.
-*   **Value Leakage Prevention**: A pie chart showing how many "simple" queries were diverted from expensive models to cheaper ones.
-*   **Quality Assurance**: A "Shadow Call" comparison showing side-by-side responses from the Frugal choice vs. a Premium baseline to prove quality isn't sacrificed.
-*   **Market Intelligence**: A live-updated table of competitor pricing (GPT-4o, Claude 3.5, Gemini 1.5) fetched via Perplexity.
+### For Executives and Managers
+*   **Savings Tracker**: Real-time visualization of total money saved.
+*   **Value Leakage Report**: Identifies exactly where money was being wasted before the proxy was implemented.
+*   **Market Intelligence**: A live feed of competitor pricing to help with long-term AI strategy and budgeting.
 
-### 2. Technical Deep-Dive (For Engineering Teams)
-*   **Latency Heatmaps**: Visualizing the massive speed difference between Cache Hits and API Calls.
-*   **Token Distribution**: Scatter plots of input vs. output tokens to identify usage patterns.
-*   **Routing Logs**: A detailed audit trail of why specific models were chosen for specific queries.
+### For Technical Teams
+*   **Performance Monitoring**: Detailed logs of speed, accuracy, and model reliability.
+*   **Audit Trail**: A transparent record of why the system chose a specific model for a specific task.
 
 ---
 
-## Technical Decisions and Philosophy
+## Technical Foundation
 
-### The "Shadow Call" Strategy
-To gain trust from stakeholders, the proxy occasionally runs a "Shadow Call"—sending the same query to a premium model in the background. This allows us to mathematically prove that our cheaper model choice provided a comparable result, justifying the cost savings.
-
----
-
-## Tech Stack
-
-*   **Backend**: FastAPI (Python)
-*   **Vector Store**: DuckDB (Native Vector Support)
-*   **Metrics DB**: SQLite / SQLModel
-*   **Dashboard**: Streamlit
-*   **LLM Provider**: Perplexity AI (Sonar Family)
-*   **Embeddings**: Sentence-Transformers (Local `all-MiniLM-L6-v2`)
+While the business logic is simple, the underlying technology is built for high-performance enterprise environments:
+*   **FastAPI**: A modern, high-speed web framework.
+*   **DuckDB**: A high-performance database for "Smart Memory" lookups.
+*   **Perplexity AI**: Used for both high-speed answers and real-time market research.
 
 ---
 
-## Quick Start
+## Quick Start for Developers
 
 1.  **Install**: `pip install -r requirements.txt`
-2.  **Configure**: Add `PERPLEXITY_API_KEY` to `.env`
-3.  **Run Server**: `python server.py`
-4.  **Run Dashboard**: `streamlit run dashboard.py`
-5.  **Test**: `python test_proxy.py` to populate the dashboard with sample data.
+2.  **Configure**: Add your `PERPLEXITY_API_KEY` to the `.env` file.
+3.  **Launch**: Run `python server.py` and `streamlit run dashboard.py`.
+4.  **Simulate**: Run `python test_proxy.py` to see the cost savings in action on the dashboard.
+
